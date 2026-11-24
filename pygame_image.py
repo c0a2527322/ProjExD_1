@@ -21,15 +21,18 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
+        default_speed = -1
         key_lst = pg.key.get_pressed()
         if key_lst[pg.K_UP]:
-            kk_rct.move_ip((0, -1))
+            kk_rct.move_ip((default_speed, -1))
         elif key_lst[pg.K_DOWN]:
-            kk_rct.move_ip((0, 1))
+            kk_rct.move_ip((default_speed, 1))
         elif key_lst[pg.K_LEFT]:
-            kk_rct.move_ip((-1, 0))
+            kk_rct.move_ip((default_speed+-1, 0))
         elif key_lst[pg.K_RIGHT]:
-            kk_rct.move_ip((1, 0))
+            kk_rct.move_ip((default_speed+2, 0))
+        else:
+            kk_rct.move_ip((default_speed, 0))
         
         x = tmr%3200  # 練習5：背景画像移動用の変数／練習9：ループ
         screen.blit(bg_img, [-x, 0])  # 練習2
