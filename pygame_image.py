@@ -9,7 +9,7 @@ def main():
     pg.display.set_caption("はばたけ！こうかとん")
     screen = pg.display.set_mode((800, 600))
     clock  = pg.time.Clock()
-    bg_img = pg.image.load("fig/pg_bg.jpg")  # 練習1
+    bg_img = pg.image.load("fig/pg_bg.png")  # 練習1
     bg_img2 = pg.transform.flip(bg_img, True, False)  # 練習8：背景画像の左右反転
     kk_img = pg.image.load("fig/3.png")  # 練習3：こうかとん画像の読み込み
     kk_img = pg.transform.flip(kk_img, True, False)
@@ -20,6 +20,7 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
+        idle_speed = -1
         key_lst = pg.key.get_pressed()  # 練習10-3：全キー状態の取得
         # print(key_lst)
         if key_lst[pg.K_UP]:  # 上矢印キーが押されたら
@@ -30,6 +31,8 @@ def main():
             kk_rct.move_ip((-1, 0))  # 横に-1動かす            
         if key_lst[pg.K_RIGHT]:  # 右矢印キーが押されたら
             kk_rct.move_ip((+1, 0))  # 横に+1動かす
+        else:
+            kk_rct.move_ip((idle_speed, 0))
 
         x = tmr%3200  # 練習5：背景画像移動用の変数／練習9：ループ
         screen.blit(bg_img, [-x, 0])  # 練習2
