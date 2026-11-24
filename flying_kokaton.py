@@ -27,11 +27,11 @@ def main():
         key_lst = pg.key.get_pressed()
         if key_lst[pg.K_UP]:
             horizonal = -1
-        elif key_lst[pg.K_DOWN]:
+        if key_lst[pg.K_DOWN]:
             horizonal = 1
-        elif key_lst[pg.K_LEFT]:
+        if key_lst[pg.K_LEFT]:
             vertical = -1
-        elif key_lst[pg.K_RIGHT]:
+        if key_lst[pg.K_RIGHT]:
             vertical = 2
         kk_rct.move_ip((default_speed+vertical, horizonal))
         
@@ -42,9 +42,6 @@ def main():
         screen.blit(kk_img, kk_rct)  # 練習4：こうかとんSurfaceの描画
         pg.display.update()
         tmr += 1
-
-        
-
         clock.tick(200)  # 練習6：FPSの変更
 
 
